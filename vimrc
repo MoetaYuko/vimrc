@@ -21,6 +21,7 @@ call plug#end()
 "###############################################################
 "color scheme
 colorscheme PaperColor
+set background=dark
 
 "###############################################################
 "syntax
