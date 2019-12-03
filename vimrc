@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'Yggdroot/indentLine'
  Plug 'bkad/CamelCaseMotion'
  Plug 'easymotion/vim-easymotion'
+ Plug 'honza/vim-snippets'
  Plug 'liuchengxu/vim-which-key'
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -47,7 +48,7 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 "###############################################################
 " CamelCaseMotion
-let g:camelcasemotion_key = '<leader>'
+let g:camelcasemotion_key = '<leader><leader>'
 
 "###############################################################
 " airline
@@ -84,7 +85,10 @@ set incsearch hlsearch
 " extensions
 let g:coc_global_extensions = [
       \ 'coc-json',
+      \ 'coc-texlab',
       \ 'coc-python',
+      \ 'coc-snippets',
+      \ 'coc-yaml',
       \ ]
 
 " if hidden is not set, TextEdit might fail.
@@ -220,3 +224,8 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " use normal command like `<leader>xi(`
 nmap <leader>x  <Plug>(coc-cursors-operator)
 " -----------coc.nvim end----------------
+
+"###############################################################
+" LaTex
+nnoremap <silent> <leader>lv  :CocCommand latex.ForwardSearch<CR>
+let g:tex_flavor = "latex"

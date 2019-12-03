@@ -1,9 +1,18 @@
 {
+  // latex
+  "latex.build.onSave": true,
+  "latex.forwardSearch.executable": "okular",
+  "latex.forwardSearch.args": [
+    "--unique",
+    "file:%p#src:%l%f"
+  ],
+  // python
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "yapf",
   "python.jediEnabled": false,
+  // lsp
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
