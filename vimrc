@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
  Plug 'NLKNguyen/papercolor-theme'
+ Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/indentLine'
  Plug 'bkad/CamelCaseMotion'
  Plug 'easymotion/vim-easymotion'
@@ -30,10 +31,10 @@ let g:python_highlight_all = 1
 
 "###############################################################
 "Switch between different windows by their direction
-no <C-j> <C-w>j| "switching to below window
-no <C-k> <C-w>k| "switching to above window
-no <C-l> <C-w>l| "switching to right window
-no <C-h> <C-w>h| "switching to left window
+nnoremap <C-j> <C-w>j| "switching to below window
+nnoremap <C-k> <C-w>k| "switching to above window
+nnoremap <C-l> <C-w>l| "switching to right window
+nnoremap <C-h> <C-w>h| "switching to left window
 
 "###############################################################
 "Nerdtree
@@ -54,6 +55,14 @@ let g:camelcasemotion_key = '<leader><leader>'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+"###############################################################
+" indentLine
+let g:indentLine_concealcursor = ''
+
+"###############################################################
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-l>"
 
 "###############################################################
 " -----buffer------
@@ -87,7 +96,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-texlab',
       \ 'coc-python',
-      \ 'coc-snippets',
+      \ 'coc-ultisnips',
       \ 'coc-yaml',
       \ ]
 
