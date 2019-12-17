@@ -37,6 +37,10 @@ nnoremap <C-l> <C-w>l| "switching to right window
 nnoremap <C-h> <C-w>h| "switching to left window
 
 "###############################################################
+" CJK
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+
+"###############################################################
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
