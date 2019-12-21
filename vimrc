@@ -21,16 +21,37 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 "###############################################################
-"color scheme
+" Random
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
+set number
+set cursorline
+set ignorecase smartcase
+set incsearch hlsearch
+set mouse=a
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>wq :x<cr>
+
+"###############################################################
+" color scheme
 colorscheme PaperColor
 set background=dark
 
 "###############################################################
-"syntax
+" English dictionary
+if filereadable('/usr/share/dict/words')
+  set dict+=/usr/share/dict/words
+endif
+
+"###############################################################
+" syntax
 let g:python_highlight_all = 1
 
 "###############################################################
-"Switch between different windows by their direction
+" Switch between different windows by their direction
 nnoremap <C-j> <C-w>j| "switching to below window
 nnoremap <C-k> <C-w>k| "switching to above window
 nnoremap <C-l> <C-w>l| "switching to right window
@@ -41,13 +62,11 @@ nnoremap <C-h> <C-w>h| "switching to left window
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 
 "###############################################################
-"Nerdtree
+" Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
 "###############################################################
 " vim-which-key
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
@@ -87,16 +106,11 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 "###############################################################
-set number
-set cursorline
-
-set ignorecase smartcase
-set incsearch hlsearch
-
-"###############################################################
 " -----------coc.nvim begin----------------
 " extensions
 let g:coc_global_extensions = [
+      \ 'coc-dictionary',
+      \ 'coc-ecdict',
       \ 'coc-json',
       \ 'coc-texlab',
       \ 'coc-python',
