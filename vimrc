@@ -1,14 +1,18 @@
 call plug#begin('~/.vim/plugged')
  Plug 'NLKNguyen/papercolor-theme'
  Plug 'SirVer/ultisnips'
+ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
  Plug 'bkad/CamelCaseMotion'
  Plug 'easymotion/vim-easymotion'
  Plug 'honza/vim-snippets'
+ Plug 'junegunn/fzf.vim'
  Plug 'liuchengxu/vim-which-key'
+ Plug 'lzap/vim-selinux'
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
+ Plug 'qpkorr/vim-bufkill'
  Plug 'scrooloose/nerdtree'
  Plug 'tpope/vim-commentary'
  Plug 'tpope/vim-eunuch'
@@ -66,6 +70,15 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 map <C-n> :NERDTreeToggle<CR>
 
 "###############################################################
+" LeaderF
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+"###############################################################
 " vim-which-key
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
@@ -93,14 +106,13 @@ let g:UltiSnipsExpandTrigger="<c-l>"
 nmap <leader>B :enew<cr>
 
 " Move to the next buffer
-nmap gb :bnext<CR>
+nmap gb :BB<CR>
 
 " Move to the previous buffer
-nmap gB :bprevious<CR>
+nmap gB :BF<CR>
 
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+" Close the current buffer
+nmap <leader>bd :BD<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
@@ -187,8 +199,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
