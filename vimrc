@@ -106,10 +106,16 @@ let g:UltiSnipsExpandTrigger="<c-l>"
 nmap <leader>B :enew<cr>
 
 " Move to the next buffer
-nmap gb :BB<CR>
+nmap gb :bnext<CR>
 
 " Move to the previous buffer
-nmap gB :BF<CR>
+nmap gB :bprevious<CR>
+
+" Move backwards through recently accessed buffers
+nmap bb :BB<CR>
+
+" Move forwards through recently accessed buffers
+nmap bf :BF<CR>
 
 " Close the current buffer
 nmap <leader>bd :BD<CR>
