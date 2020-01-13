@@ -113,10 +113,10 @@ nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
 
 " Move backwards through recently accessed buffers
-nmap bb :BB<CR>
+nmap <leader>bb :BB<CR>
 
 " Move forwards through recently accessed buffers
-nmap bf :BF<CR>
+nmap <leader>bf :BF<CR>
 
 " Close the current buffer
 nmap <leader>bd :BD<CR>
