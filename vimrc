@@ -37,7 +37,7 @@ set incsearch hlsearch
 set mouse=a
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>q :q<cr>
+nnoremap <leader>qq :q<cr>
 nnoremap <leader>wq :x<cr>
 
 "###############################################################
