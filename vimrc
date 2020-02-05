@@ -14,9 +14,12 @@ call plug#begin('~/.vim/plugged')
  Plug 'ntpeters/vim-better-whitespace'
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
+ Plug 'roxma/vim-tmux-clipboard'
  Plug 'scrooloose/nerdtree'
+ Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-commentary'
  Plug 'tpope/vim-eunuch'
+ Plug 'tpope/vim-fugitive'
  Plug 'tpope/vim-repeat'
  Plug 'tpope/vim-sleuth'
  Plug 'tpope/vim-surround'
@@ -35,6 +38,7 @@ set cursorline
 set ignorecase smartcase
 set incsearch hlsearch
 set mouse=a
+set backspace=indent,eol,start
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>qq :q<cr>
@@ -69,6 +73,14 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 "###############################################################
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
+
+"###############################################################
+" FZF
+" Make :Ag not match file names
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" Ag current word
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 "###############################################################
 " LeaderF
