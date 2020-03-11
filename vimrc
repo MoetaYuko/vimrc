@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
+ Plug 'airblade/vim-gitgutter'
  Plug 'bkad/CamelCaseMotion'
  Plug 'easymotion/vim-easymotion'
  Plug 'honza/vim-snippets'
@@ -17,6 +18,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'scrooloose/nerdtree'
  Plug 'tmux-plugins/vim-tmux-focus-events'
+ Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
  Plug 'tpope/vim-eunuch'
  Plug 'tpope/vim-fugitive'
@@ -25,7 +27,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-surround'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-python/python-syntax'
- Plug 'vim-vdebug/vdebug'
 call plug#end()
 
 "###############################################################
@@ -82,6 +83,12 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " Ag current word
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+nnoremap <silent> <Leader>gg :GGrep <C-R><C-W><CR>
+
 "###############################################################
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
@@ -112,6 +119,10 @@ let g:indentLine_concealcursor = ''
 "###############################################################
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-l>"
+
+"###############################################################
+" vim-gitgutter
+let g:gitgutter_max_signs = 10000
 
 "###############################################################
 " -----buffer------
