@@ -296,5 +296,5 @@ nmap <leader>x  <Plug>(coc-cursors-operator)
 
 "###############################################################
 " LaTex
-nnoremap <silent> <leader>lv  :CocCommand latex.ForwardSearch<CR>
+autocmd FileType tex nnoremap <silent> <leader>lv  :CocCommand latex.ForwardSearch<CR>
 let g:tex_flavor = "latex"
