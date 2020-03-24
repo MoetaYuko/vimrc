@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
+ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
@@ -146,6 +147,10 @@ nmap <leader>bd :BD<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+"###############################################################
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
 
 "###############################################################
 " -----------coc.nvim begin----------------
