@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
  Plug 'bkad/CamelCaseMotion'
+ Plug 'cespare/vim-toml'
  Plug 'easymotion/vim-easymotion'
  Plug 'honza/vim-snippets'
  Plug 'junegunn/fzf.vim'
@@ -18,6 +19,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'scrooloose/nerdtree'
+ Plug 'skywind3000/asyncrun.vim'
+ Plug 'skywind3000/asynctasks.vim'
  Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
@@ -27,6 +30,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-sleuth'
  Plug 'tpope/vim-surround'
  Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
  Plug 'vim-python/python-syntax'
 call plug#end()
 
@@ -96,7 +100,6 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 "###############################################################
@@ -106,12 +109,68 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 "###############################################################
 " CamelCaseMotion
-let g:camelcasemotion_key = '<leader><leader>'
+let g:camelcasemotion_key = '\'
 
 "###############################################################
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+"###############################################################
+" asynctasks.vim
+let g:asyncrun_open = 8
+
+" LeaderF integration
+function! s:lf_task_source(...)
+	let rows = asynctasks#source(&columns * 48 / 100)
+	let source = []
+	for row in rows
+		let name = row[0]
+		let source += [name . '  ' . row[1] . '  : ' . row[2]]
+	endfor
+	return source
+endfunction
+
+
+function! s:lf_task_accept(line, arg)
+	let pos = stridx(a:line, '<')
+	if pos < 0
+		return
+	endif
+	let name = strpart(a:line, 0, pos)
+	let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+	if name != ''
+		exec "AsyncTask " . name
+	endif
+endfunction
+
+function! s:lf_task_digest(line, mode)
+	let pos = stridx(a:line, '<')
+	if pos < 0
+		return [a:line, 0]
+	endif
+	let name = strpart(a:line, 0, pos)
+	return [name, 0]
+endfunction
+
+function! s:lf_win_init(...)
+	setlocal nonumber
+	setlocal nowrap
+endfunction
+
+
+let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
+let g:Lf_Extensions.task = {
+			\ 'source': string(function('s:lf_task_source'))[10:-3],
+			\ 'accept': string(function('s:lf_task_accept'))[10:-3],
+			\ 'get_digest': string(function('s:lf_task_digest'))[10:-3],
+			\ 'highlights_def': {
+			\     'Lf_hl_funcScope': '^\S\+',
+			\     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
+			\ },
+		\ }
+
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
 
 "###############################################################
 " indentLine
@@ -159,8 +218,10 @@ let g:coc_global_extensions = [
       \ 'coc-dictionary',
       \ 'coc-ecdict',
       \ 'coc-json',
-      \ 'coc-texlab',
+      \ 'coc-pairs',
       \ 'coc-python',
+      \ 'coc-rls',
+      \ 'coc-texlab',
       \ 'coc-ultisnips',
       \ 'coc-yaml',
       \ ]
@@ -200,11 +261,16 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if has('patch8.1.1068')
+  " Use `complete_info` if your (Neo)Vim version supports it.
+  inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+else
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -254,15 +320,18 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Create mappings for function text object, requires document symbols feature of languageserver.
-" xmap if <Plug>(coc-funcobj-i)
-" xmap af <Plug>(coc-funcobj-a)
-" omap if <Plug>(coc-funcobj-i)
-" omap af <Plug>(coc-funcobj-a)
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-" nmap <silent> <C-d> <Plug>(coc-range-select)
-" xmap <silent> <C-d> <Plug>(coc-range-select)
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -273,7 +342,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList

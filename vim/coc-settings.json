@@ -1,4 +1,6 @@
 {
+  // coc
+  "coc.preferences.formatOnType": true,
   // latex
   "latex.build.onSave": true,
   "latex.forwardSearch.executable": "okular",
@@ -12,6 +14,8 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "yapf",
   "python.jediEnabled": false,
+  // rust
+  "rust-client.disableRustup": true,
   // lsp
   "languageserver": {
     "bash": {
