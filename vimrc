@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'honza/vim-snippets'
  Plug 'junegunn/fzf.vim'
  Plug 'liuchengxu/vim-which-key'
+ Plug 'luochen1990/rainbow'
  Plug 'lzap/vim-selinux'
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -18,9 +19,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
- Plug 'scrooloose/nerdtree'
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
+ Plug 'skywind3000/vim-terminal-help'
  Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
@@ -32,6 +33,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'vim-python/python-syntax'
+ Plug 'wincent/terminus'
 call plug#end()
 
 "###############################################################
@@ -43,7 +45,6 @@ set number
 set cursorline
 set ignorecase smartcase
 set incsearch hlsearch
-set mouse=a
 set backspace=indent,eol,start
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -52,6 +53,14 @@ nnoremap <leader>wq :x<cr>
 
 "###############################################################
 " color scheme
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
 colorscheme PaperColor
 set background=dark
 
@@ -66,19 +75,8 @@ endif
 let g:python_highlight_all = 1
 
 "###############################################################
-" Switch between different windows by their direction
-nnoremap <C-j> <C-w>j| "switching to below window
-nnoremap <C-k> <C-w>k| "switching to above window
-nnoremap <C-l> <C-w>l| "switching to right window
-nnoremap <C-h> <C-w>h| "switching to left window
-
-"###############################################################
 " CJK
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-
-"###############################################################
-" Nerdtree
-map <C-n> :NERDTreeToggle<CR>
 
 "###############################################################
 " FZF
@@ -125,6 +123,7 @@ let g:airline_powerline_fonts = 1
 "###############################################################
 " asynctasks.vim
 let g:asyncrun_open = 8
+let g:asynctasks_term_pos = 'bottom'
 
 " LeaderF integration
 function! s:lf_task_source(...)
@@ -183,6 +182,10 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
 let g:indentLine_concealcursor = ''
 
 "###############################################################
+" rainbow
+let g:rainbow_active = 1
+
+"###############################################################
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-l>"
 
@@ -223,6 +226,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 let g:coc_global_extensions = [
       \ 'coc-dictionary',
       \ 'coc-ecdict',
+      \ 'coc-explorer',
       \ 'coc-json',
       \ 'coc-pairs',
       \ 'coc-python',
@@ -374,6 +378,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " use normal command like `<leader>xi(`
 nmap <leader>x  <Plug>(coc-cursors-operator)
+
+map <C-n> :CocCommand explorer<CR>
 " -----------coc.nvim end----------------
 
 "###############################################################
