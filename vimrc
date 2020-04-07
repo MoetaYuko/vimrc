@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
  Plug 'NLKNguyen/papercolor-theme'
  Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-eunuch'
  Plug 'tpope/vim-fugitive'
  Plug 'tpope/vim-repeat'
+ Plug 'tpope/vim-sensible'
  Plug 'tpope/vim-sleuth'
  Plug 'tpope/vim-surround'
  Plug 'vim-airline/vim-airline'
@@ -53,8 +54,7 @@ let g:maplocalleader = ','
 set number
 set cursorline
 set ignorecase smartcase
-set incsearch hlsearch
-set backspace=indent,eol,start
+set hlsearch
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>qq :q<cr>
@@ -341,10 +341,10 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+xmap iF <Plug>(coc-funcobj-i)
+xmap aF <Plug>(coc-funcobj-a)
+omap iF <Plug>(coc-funcobj-i)
+omap aF <Plug>(coc-funcobj-a)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
