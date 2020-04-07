@@ -7,8 +7,14 @@ call plug#begin('~/.vim/plugged')
  Plug 'bkad/CamelCaseMotion'
  Plug 'cespare/vim-toml'
  Plug 'easymotion/vim-easymotion'
+ Plug 'farmergreg/vim-lastplace'
+ Plug 'gilligan/textobj-gitgutter'
  Plug 'honza/vim-snippets'
  Plug 'junegunn/fzf.vim'
+ Plug 'kana/vim-textobj-entire'
+ Plug 'kana/vim-textobj-lastpat'
+ Plug 'kana/vim-textobj-line'
+ Plug 'kana/vim-textobj-user'
  Plug 'liuchengxu/vim-which-key'
  Plug 'luochen1990/rainbow'
  Plug 'lzap/vim-selinux'
@@ -19,9 +25,11 @@ call plug#begin('~/.vim/plugged')
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
+ Plug 'sgur/vim-textobj-parameter'
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
+ Plug 'thinca/vim-textobj-between'
  Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
@@ -33,6 +41,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'vim-python/python-syntax'
+ Plug 'whatyouhide/vim-textobj-xmlattr'
  Plug 'wincent/terminus'
 call plug#end()
 
@@ -340,8 +349,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+" nmap <silent> <TAB> <Plug>(coc-range-select)
+" xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
