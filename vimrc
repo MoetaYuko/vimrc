@@ -89,11 +89,8 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 
 "###############################################################
 " FZF
-" Make :Ag not match file names
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-" Ag current word
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+" Rg current word
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
