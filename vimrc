@@ -10,6 +10,7 @@ call plug#begin()
  Plug 'farmergreg/vim-lastplace'
  Plug 'gilligan/textobj-gitgutter'
  Plug 'honza/vim-snippets'
+ Plug 'ianding1/leetcode.vim'
  Plug 'junegunn/fzf.vim'
  Plug 'kana/vim-textobj-entire'
  Plug 'kana/vim-textobj-lastpat'
@@ -186,6 +187,11 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
 "###############################################################
 " indentLine
 let g:indentLine_concealcursor = ''
+
+"###############################################################
+" leetcode
+let g:leetcode_solution_filetype='rust'
+let g:leetcode_browser='chrome'
 
 "###############################################################
 " rainbow
