@@ -40,10 +40,12 @@ call plug#begin()
  Plug 'tpope/vim-sensible'
  Plug 'tpope/vim-sleuth'
  Plug 'tpope/vim-surround'
+ Plug 'tpope/vim-unimpaired'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'vim-python/python-syntax'
  Plug 'whatyouhide/vim-textobj-xmlattr'
+ Plug 'will133/vim-dirdiff'
  Plug 'wincent/terminus'
 call plug#end()
 
@@ -210,23 +212,8 @@ let g:gitgutter_max_signs = 10000
 " To open a new empty buffer
 nmap <leader>B :enew<cr>
 
-" Move to the next buffer
-nmap gb :bnext<CR>
-
-" Move to the previous buffer
-nmap gB :bprevious<CR>
-
-" Move backwards through recently accessed buffers
-nmap <leader>bb :BB<CR>
-
-" Move forwards through recently accessed buffers
-nmap <leader>bf :BF<CR>
-
 " Close the current buffer
 nmap <leader>bd :BD<CR>
-
-" Show all open buffers and their status
-nmap <leader>bl :ls<CR>
 
 "###############################################################
 " vimspector
