@@ -52,7 +52,7 @@ call plug#end()
 "###############################################################
 " Random
 let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
+let g:maplocalleader = '\'
 
 set number
 set cursorline
@@ -223,6 +223,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 " -----------coc.nvim begin----------------
 " extensions
 let g:coc_global_extensions = [
+      \ 'coc-cmake',
       \ 'coc-dictionary',
       \ 'coc-ecdict',
       \ 'coc-explorer',
@@ -383,5 +384,5 @@ map <C-n> :CocCommand explorer<CR>
 
 "###############################################################
 " LaTex
-autocmd FileType tex nnoremap <silent> <leader>lv  :CocCommand latex.ForwardSearch<CR>
+autocmd FileType tex nnoremap <silent> <localleader>lv  :CocCommand latex.ForwardSearch<CR>
 let g:tex_flavor = "latex"

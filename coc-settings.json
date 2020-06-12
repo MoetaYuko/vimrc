@@ -3,6 +3,13 @@
   "coc.preferences.formatOnType": true,
   // latex
   "latex.build.onSave": true,
+  "latex.build.args": [
+    "-pdf",
+    "-xelatex",
+    "-shell-escape",
+    "-interaction=nonstopmode",
+    "-synctex=1"
+  ],
   "latex.forwardSearch.executable": "okular",
   "latex.forwardSearch.args": [
     "--unique",
