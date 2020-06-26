@@ -5,6 +5,7 @@ call plug#begin()
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
  Plug 'bkad/CamelCaseMotion'
+ Plug 'bronson/vim-visual-star-search'
  Plug 'cespare/vim-toml'
  Plug 'easymotion/vim-easymotion'
  Plug 'farmergreg/vim-lastplace'
@@ -12,6 +13,7 @@ call plug#begin()
  Plug 'honza/vim-snippets'
  Plug 'ianding1/leetcode.vim'
  Plug 'junegunn/fzf.vim'
+ Plug 'junegunn/gv.vim'
  Plug 'kana/vim-textobj-entire'
  Plug 'kana/vim-textobj-lastpat'
  Plug 'kana/vim-textobj-line'
@@ -30,6 +32,7 @@ call plug#begin()
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
+ Plug 'svermeulen/vim-cutlass'
  Plug 'thinca/vim-textobj-between'
  Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-abolish'
@@ -208,12 +211,17 @@ let g:UltiSnipsExpandTrigger="<c-l>"
 let g:gitgutter_max_signs = 10000
 
 "###############################################################
+" vim-cutlass
+nnoremap x d
+xnoremap x d
+
+nnoremap xx dd
+nnoremap X D
+
+"###############################################################
 " -----buffer------
 " To open a new empty buffer
 nmap <leader>B :enew<cr>
-
-" Close the current buffer
-nmap <leader>bd :BD<CR>
 
 "###############################################################
 " vimspector
