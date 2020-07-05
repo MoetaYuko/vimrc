@@ -12,6 +12,7 @@ call plug#begin()
  Plug 'gilligan/textobj-gitgutter'
  Plug 'honza/vim-snippets'
  Plug 'ianding1/leetcode.vim'
+ Plug 'jiangmiao/auto-pairs'
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/gv.vim'
  Plug 'kana/vim-textobj-entire'
@@ -219,6 +220,10 @@ nnoremap xx dd
 nnoremap X D
 
 "###############################################################
+" auto-pairs
+let g:AutoPairsMapCR = 0
+
+"###############################################################
 " -----buffer------
 " To open a new empty buffer
 nmap <leader>B :enew<cr>
@@ -236,7 +241,6 @@ let g:coc_global_extensions = [
       \ 'coc-ecdict',
       \ 'coc-explorer',
       \ 'coc-json',
-      \ 'coc-pairs',
       \ 'coc-python',
       \ 'coc-rls',
       \ 'coc-texlab',
