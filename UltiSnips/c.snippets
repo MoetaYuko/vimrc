@@ -1,0 +1,6 @@
+#https://stackoverflow.com/questions/20979565/how-can-i-print-the-result-of-sizeof-at-compile-time-in-c
+snippet dums "dump size"
+#pragma GCC diagnostic error "-Wformat"
+char (*__kaboom)[sizeof(${VISUAL}$0)] = 1;
+printf( "%d", __kaboom );
+endsnippet
