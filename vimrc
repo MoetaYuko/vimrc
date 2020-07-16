@@ -242,6 +242,7 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ 'coc-json',
       \ 'coc-python',
+      \ 'coc-rainbow-fart',
       \ 'coc-rls',
       \ 'coc-texlab',
       \ 'coc-ultisnips',

@@ -21,6 +21,12 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "yapf",
   "python.jediEnabled": false,
+  // rainbow-fart
+  "rainbow-fart.locale": ["jp"],
+  "rainbow-fart.ffplay": "ffplay",
+  "rainbow-fart.voice-packages": [
+    "$HOME/kugimiya-voice"
+  ],
   // rust
   "rust-client.disableRustup": true,
   // lsp
