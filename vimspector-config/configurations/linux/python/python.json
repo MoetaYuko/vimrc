@@ -1,0 +1,16 @@
+{
+  "configurations": {
+    "Current file: Launch": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Current file: Launch",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "console": "externalTerminal",
+        "debugOptions": [],
+        "program": "${file}"
+      }
+    }
+  }
+}

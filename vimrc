@@ -25,7 +25,7 @@ call plug#begin()
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
- Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --force-enable-rust --basedir $HOME/.vim/vimspector-config'}
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
@@ -231,6 +231,7 @@ nmap <leader>B :enew<cr>
 "###############################################################
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
 
 "###############################################################
 " -----------coc.nvim begin----------------
