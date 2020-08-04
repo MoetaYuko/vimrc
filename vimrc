@@ -1,16 +1,18 @@
 call plug#begin()
- Plug 'NLKNguyen/papercolor-theme'
  Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
+ Plug 'antoinemadec/coc-fzf'
  Plug 'bkad/CamelCaseMotion'
  Plug 'bronson/vim-visual-star-search'
  Plug 'cespare/vim-toml'
  Plug 'easymotion/vim-easymotion'
  Plug 'farmergreg/vim-lastplace'
  Plug 'gilligan/textobj-gitgutter'
+ Plug 'godlygeek/tabular'
  Plug 'honza/vim-snippets'
+ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
  Plug 'ianding1/leetcode.vim'
  Plug 'jiangmiao/auto-pairs'
  Plug 'junegunn/fzf.vim'
@@ -19,12 +21,16 @@ call plug#begin()
  Plug 'kana/vim-textobj-lastpat'
  Plug 'kana/vim-textobj-line'
  Plug 'kana/vim-textobj-user'
+ Plug 'lilydjwg/fcitx.vim'
  Plug 'liuchengxu/vim-which-key'
  Plug 'luochen1990/rainbow'
  Plug 'lzap/vim-selinux'
  Plug 'michaeljsmith/vim-indent-object'
+ Plug 'morhetz/gruvbox'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
+ Plug 'pboettch/vim-cmake-syntax'
+ Plug 'plasticboy/vim-markdown'
  Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --force-enable-rust --basedir $HOME/.vim/vimspector-config'}
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
@@ -46,7 +52,6 @@ call plug#begin()
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-unimpaired'
  Plug 'vim-airline/vim-airline'
- Plug 'vim-airline/vim-airline-themes'
  Plug 'vim-python/python-syntax'
  Plug 'whatyouhide/vim-textobj-xmlattr'
  Plug 'will133/vim-dirdiff'
@@ -67,18 +72,19 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>qq :q<cr>
 nnoremap <leader>wq :x<cr>
 
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+
 "###############################################################
 " color scheme
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-
-colorscheme PaperColor
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 "###############################################################
 " English dictionary
@@ -132,6 +138,7 @@ let g:camelcasemotion_key = '\'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
 
 "###############################################################
 " asynctasks.vim
@@ -241,6 +248,7 @@ let g:coc_global_extensions = [
       \ 'coc-dictionary',
       \ 'coc-ecdict',
       \ 'coc-explorer',
+      \ 'coc-html',
       \ 'coc-json',
       \ 'coc-python',
       \ 'coc-rainbow-fart',
@@ -373,21 +381,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>e  :<C-u>CocFzfList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>s  :<C-u>CocFzfList symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " use normal command like `<leader>xi(`

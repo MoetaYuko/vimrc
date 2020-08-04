@@ -1,6 +1,10 @@
 {
   // coc
   "coc.preferences.formatOnType": true,
+  // explorer
+  "explorer.icon.enableNerdfont": true,
+  // html
+  "html.autoClosingTags": true,
   // latex
   "latex.build.onSave": true,
   "latex.build.args": [
