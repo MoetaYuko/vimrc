@@ -33,6 +33,8 @@
   ],
   // rust
   "rust-client.disableRustup": true,
+  // xml
+  "xml.java.home": "/usr/lib/jvm/default",
   // lsp
   "languageserver": {
     "bash": {

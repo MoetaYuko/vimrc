@@ -1,4 +1,5 @@
 call plug#begin()
+ Plug 'AndrewRadev/sideways.vim'
  Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
@@ -211,6 +212,13 @@ let g:leetcode_browser='chrome'
 let g:rainbow_active = 1
 
 "###############################################################
+" sideways.vim
+nnoremap [, :SidewaysJumpLeft<cr>
+nnoremap ], :SidewaysJumpRight<cr>
+nnoremap <, :SidewaysLeft<cr>
+nnoremap >, :SidewaysRight<cr>
+
+"###############################################################
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-l>"
 
@@ -255,6 +263,7 @@ let g:coc_global_extensions = [
       \ 'coc-rls',
       \ 'coc-texlab',
       \ 'coc-ultisnips',
+      \ 'coc-xml',
       \ 'coc-yaml',
       \ ]
 
