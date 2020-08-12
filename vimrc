@@ -252,6 +252,7 @@ let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
 " -----------coc.nvim begin----------------
 " extensions
 let g:coc_global_extensions = [
+      \ 'coc-clangd',
       \ 'coc-cmake',
       \ 'coc-dictionary',
       \ 'coc-ecdict',
