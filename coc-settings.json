@@ -1,6 +1,7 @@
 {
   // clangd
   "clangd.arguments": ["--query-driver=**/*"],
+  "clangd.semanticHighlighting": true,
   // coc
   "coc.preferences.formatOnType": true,
   // explorer

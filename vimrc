@@ -15,9 +15,11 @@ call plug#begin()
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
  Plug 'ianding1/leetcode.vim'
+ Plug 'jackguo380/vim-lsp-cxx-highlight'
  Plug 'jiangmiao/auto-pairs'
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/gv.vim'
+ Plug 'jupyter-vim/jupyter-vim'
  Plug 'kana/vim-textobj-entire'
  Plug 'kana/vim-textobj-lastpat'
  Plug 'kana/vim-textobj-line'
@@ -27,7 +29,6 @@ call plug#begin()
  Plug 'luochen1990/rainbow'
  Plug 'lzap/vim-selinux'
  Plug 'michaeljsmith/vim-indent-object'
- Plug 'morhetz/gruvbox'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
  Plug 'pboettch/vim-cmake-syntax'
@@ -36,6 +37,7 @@ call plug#begin()
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
+ Plug 'sainnhe/gruvbox-material'
  Plug 'sgur/vim-textobj-parameter'
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
@@ -84,8 +86,10 @@ if exists('+termguicolors')
   set termguicolors
 endif
 set background=dark
-let g:gruvbox_italic=1
-colorscheme gruvbox
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_diagnostic_line_highlight = 1
+colorscheme gruvbox-material
 
 "###############################################################
 " English dictionary
@@ -99,7 +103,7 @@ let g:python_highlight_all = 1
 
 "###############################################################
 " CJK
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
 
 "###############################################################
 " FZF
@@ -139,7 +143,7 @@ let g:camelcasemotion_key = '\'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox_material'
 
 "###############################################################
 " asynctasks.vim
@@ -257,6 +261,7 @@ let g:coc_global_extensions = [
       \ 'coc-dictionary',
       \ 'coc-ecdict',
       \ 'coc-explorer',
+      \ 'coc-highlight',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-python',
