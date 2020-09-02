@@ -12,6 +12,7 @@ call plug#begin()
  Plug 'farmergreg/vim-lastplace'
  Plug 'gilligan/textobj-gitgutter'
  Plug 'godlygeek/tabular'
+ Plug 'heavenshell/vim-textlint'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
  Plug 'ianding1/leetcode.vim'
@@ -264,11 +265,13 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-html',
       \ 'coc-json',
+      \ 'coc-markdownlint',
       \ 'coc-python',
       \ 'coc-rainbow-fart',
       \ 'coc-rls',
       \ 'coc-texlab',
       \ 'coc-ultisnips',
+      \ 'coc-vimlsp',
       \ 'coc-xml',
       \ 'coc-yaml',
       \ ]
@@ -330,15 +333,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+nnoremap <silent> K :call CocAction('doHover')<CR>
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
