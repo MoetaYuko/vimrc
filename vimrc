@@ -20,6 +20,7 @@ call plug#begin()
  Plug 'jiangmiao/auto-pairs'
  Plug 'junegunn/fzf.vim'
  Plug 'junegunn/gv.vim'
+ Plug 'junegunn/vim-easy-align'
  Plug 'jupyter-vim/jupyter-vim'
  Plug 'kana/vim-textobj-entire'
  Plug 'kana/vim-textobj-lastpat'
@@ -238,6 +239,18 @@ xnoremap x d
 
 nnoremap xx dd
 nnoremap X D
+
+"###############################################################
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+let g:easy_align_delimiters = {
+\  '%': { 'pattern': '%\+', 'delimiter_align': 'l', 'ignore_groups': ['!Comment']  },
+\ }
 
 "###############################################################
 " auto-pairs
