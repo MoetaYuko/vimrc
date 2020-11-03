@@ -12,6 +12,7 @@
   "latex.build.onSave": true,
   "latex.build.args": [
     "-pdf",
+    "-lualatex",
     "-shell-escape",
     "-interaction=nonstopmode",
     "-synctex=1"

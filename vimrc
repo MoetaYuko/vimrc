@@ -58,6 +58,7 @@ call plug#begin()
  Plug 'tpope/vim-unimpaired'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-python/python-syntax'
+ Plug 'vimwiki/vimwiki'
  Plug 'whatyouhide/vim-textobj-xmlattr'
  Plug 'will133/vim-dirdiff'
  Plug 'wincent/terminus'
@@ -271,6 +272,11 @@ nmap <leader>B :enew<cr>
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
+
+"###############################################################
+" vimwiki
+let g:vimwiki_list = [{'path': '~/OneDrive/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "###############################################################
 " -----------coc.nvim begin----------------
