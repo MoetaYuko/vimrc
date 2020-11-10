@@ -1,6 +1,5 @@
 call plug#begin()
  Plug 'AndrewRadev/sideways.vim'
- Plug 'SirVer/ultisnips'
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
@@ -232,10 +231,6 @@ nnoremap <, :SidewaysLeft<cr>
 nnoremap >, :SidewaysRight<cr>
 
 "###############################################################
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-l>"
-
-"###############################################################
 " vim-gitgutter
 let g:gitgutter_max_signs = 10000
 
@@ -294,8 +289,8 @@ let g:coc_global_extensions = [
       \ 'coc-python',
       \ 'coc-rainbow-fart',
       \ 'coc-rls',
+      \ 'coc-snippets',
       \ 'coc-texlab',
-      \ 'coc-ultisnips',
       \ 'coc-vimlsp',
       \ 'coc-xml',
       \ 'coc-yaml',
@@ -453,6 +448,15 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <leader>x  <Plug>(coc-cursors-operator)
 
 map <C-n> :CocCommand explorer<CR>
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 " -----------coc.nvim end----------------
 
 "###############################################################
