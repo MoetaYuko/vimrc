@@ -3,14 +3,15 @@ call plug#begin()
  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
+ Plug 'andymass/vim-matchup'
  Plug 'antoinemadec/coc-fzf'
  Plug 'bkad/CamelCaseMotion'
  Plug 'bronson/vim-visual-star-search'
  Plug 'cespare/vim-toml'
  Plug 'easymotion/vim-easymotion'
  Plug 'farmergreg/vim-lastplace'
- Plug 'gilligan/textobj-gitgutter'
  Plug 'godlygeek/tabular'
+ Plug 'gruvbox-community/gruvbox'
  Plug 'heavenshell/vim-textlint'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -21,33 +22,30 @@ call plug#begin()
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
  Plug 'jupyter-vim/jupyter-vim'
- Plug 'kana/vim-textobj-entire'
- Plug 'kana/vim-textobj-lastpat'
- Plug 'kana/vim-textobj-line'
- Plug 'kana/vim-textobj-user'
+ Plug 'lervag/vimtex'
  Plug 'lilydjwg/fcitx.vim'
  Plug 'liuchengxu/vim-which-key'
  Plug 'luochen1990/rainbow'
  Plug 'lzap/vim-selinux'
+ Plug 'mhinz/vim-startify'
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'ntpeters/vim-better-whitespace'
  Plug 'pboettch/vim-cmake-syntax'
  Plug 'plasticboy/vim-markdown'
- Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --force-enable-rust --basedir $HOME/.vim/vimspector-config'}
+ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-rust --basedir $HOME/.vim/vimspector-config'}
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
- Plug 'sainnhe/gruvbox-material'
- Plug 'sgur/vim-textobj-parameter'
+ Plug 'ryanoasis/vim-devicons'
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
  Plug 'svermeulen/vim-cutlass'
- Plug 'thinca/vim-textobj-between'
  Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
+ Plug 'tpope/vim-dispatch'
  Plug 'tpope/vim-eunuch'
  Plug 'tpope/vim-fugitive'
  Plug 'tpope/vim-repeat'
@@ -55,10 +53,11 @@ call plug#begin()
  Plug 'tpope/vim-sleuth'
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-unimpaired'
+ Plug 'tyru/open-browser.vim'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-python/python-syntax'
  Plug 'vimwiki/vimwiki'
- Plug 'whatyouhide/vim-textobj-xmlattr'
+ Plug 'wellle/targets.vim'
  Plug 'will133/vim-dirdiff'
  Plug 'wincent/terminus'
 call plug#end()
@@ -80,6 +79,11 @@ nnoremap <leader>wq :x<cr>
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 
+" workaround broken netrw
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
 "###############################################################
 " color scheme
 if exists('+termguicolors')
@@ -88,10 +92,8 @@ if exists('+termguicolors')
   set termguicolors
 endif
 set background=dark
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_diagnostic_line_highlight = 1
-colorscheme gruvbox-material
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 "###############################################################
 " English dictionary
@@ -134,6 +136,7 @@ command! -nargs=0 -bar GrammarousReopen call grammarous#create_update_info_windo
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
@@ -141,7 +144,7 @@ noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 "###############################################################
 " vim-which-key
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
 
 "###############################################################
 " CamelCaseMotion
@@ -151,7 +154,7 @@ let g:camelcasemotion_key = '\'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox_material'
+let g:airline_theme='gruvbox'
 
 "###############################################################
 " asynctasks.vim
@@ -213,6 +216,7 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
 "###############################################################
 " indentLine
 let g:indentLine_concealcursor = ''
+let g:indentLine_fileTypeExclude = ['coc-explorer', 'leaderf']
 
 "###############################################################
 " leetcode
@@ -255,6 +259,10 @@ let g:easy_align_delimiters = {
 \ }
 
 "###############################################################
+" vim-terminal-help
+let g:terminal_list = 0
+
+"###############################################################
 " auto-pairs
 let g:AutoPairsMapCR = 0
 
@@ -267,6 +275,53 @@ nmap <leader>B :enew<cr>
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
+
+"###############################################################
+" vimtex
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+
+let g:tex_flavor = "latex"
+let g:matchup_override_vimtex = 1
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-shell-escape',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+" use texlab completion
+let g:vimtex_complete_enabled = 0
+
+let g:vimtex_view_method = 'zathura'
+
+set spelllang=en_us
+let g:vimtex_grammar_vlty = {}
+let g:vimtex_grammar_vlty.lt_command = 'languagetool'
+let g:vimtex_grammar_vlty.server = 'my'
+let g:vimtex_grammar_vlty.shell_options =
+        \   ' --packages "*"'
+        \ . ' --equation-punctuation display'
+        \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'
+let g:vimtex_grammar_vlty.show_suggestions = 1
+autocmd FileType tex nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+
+" Close viewers when vimtex buffers are closed
+function! CloseViewers()
+  " Close viewers on quit
+  if executable('xdotool') && exists('b:vimtex')
+      \ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
+    call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+  endif
+endfunction
+
+augroup vimtex_event_2
+  au!
+  au User VimtexEventQuit call CloseViewers()
+augroup END
 
 "###############################################################
 " vimwiki
@@ -458,8 +513,3 @@ vmap <C-j> <Plug>(coc-snippets-select)
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " -----------coc.nvim end----------------
-
-"###############################################################
-" LaTex
-autocmd FileType tex nnoremap <silent> <localleader>lv  :CocCommand latex.ForwardSearch<CR>
-let g:tex_flavor = "latex"

@@ -6,13 +6,12 @@
   "coc.preferences.formatOnType": true,
   // explorer
   "explorer.icon.enableNerdfont": true,
+  "explorer.filename.colored.enable": true,
   // html
   "html.autoClosingTags": true,
   // latex
-  "latex.build.onSave": true,
   "latex.build.args": [
     "-pdf",
-    "-lualatex",
     "-shell-escape",
     "-interaction=nonstopmode",
     "-synctex=1"
