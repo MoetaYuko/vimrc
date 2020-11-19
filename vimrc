@@ -11,7 +11,6 @@ call plug#begin()
  Plug 'easymotion/vim-easymotion'
  Plug 'farmergreg/vim-lastplace'
  Plug 'godlygeek/tabular'
- Plug 'gruvbox-community/gruvbox'
  Plug 'heavenshell/vim-textlint'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -38,6 +37,7 @@ call plug#begin()
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'ryanoasis/vim-devicons'
+ Plug 'sainnhe/gruvbox-material'
  Plug 'skywind3000/asyncrun.vim'
  Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
@@ -92,8 +92,11 @@ if exists('+termguicolors')
   set termguicolors
 endif
 set background=dark
-let g:gruvbox_italic=1
-colorscheme gruvbox
+
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_diagnostic_line_highlight = 1
+colorscheme gruvbox-material
 
 "###############################################################
 " English dictionary
@@ -154,7 +157,7 @@ let g:camelcasemotion_key = '\'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox_material'
 
 "###############################################################
 " asynctasks.vim
@@ -307,7 +310,6 @@ let g:vimtex_grammar_vlty.shell_options =
         \ . ' --equation-punctuation display'
         \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'
 let g:vimtex_grammar_vlty.show_suggestions = 1
-autocmd FileType tex nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
 
 " Close viewers when vimtex buffers are closed
 function! CloseViewers()
@@ -320,6 +322,8 @@ endfunction
 
 augroup vimtex_event_2
   au!
+  au User VimtexEventInitPost nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+  au User VimtexEventInitPost command! -buffer -nargs=0 VimtexGrammarCheck :Dispatch -compiler=vlty
   au User VimtexEventQuit call CloseViewers()
 augroup END
 
