@@ -1,6 +1,6 @@
 call plug#begin()
  Plug 'AndrewRadev/sideways.vim'
- Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
  Plug 'Yggdroot/indentLine'
  Plug 'airblade/vim-gitgutter'
  Plug 'andymass/vim-matchup'
@@ -32,7 +32,7 @@ call plug#begin()
  Plug 'ntpeters/vim-better-whitespace'
  Plug 'pboettch/vim-cmake-syntax'
  Plug 'plasticboy/vim-markdown'
- Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-rust --basedir $HOME/.vim/vimspector-config'}
+ Plug 'puremourning/vimspector', {'do': (has('unix') ? 'python3' : 'py -3') . ' install_gadget.py --enable-c --enable-python --enable-rust --basedir ' . globpath(fnamemodify($MYVIMRC, ':p:h'), 'vimspector-config')}
  Plug 'qpkorr/vim-bufkill'
  Plug 'rhysd/vim-grammarous'
  Plug 'roxma/vim-tmux-clipboard'
@@ -111,6 +111,7 @@ let g:python_highlight_all = 1
 "###############################################################
 " CJK
 set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+set encoding=utf-8
 
 "###############################################################
 " FZF
@@ -127,7 +128,9 @@ nnoremap <silent> <Leader>gg :GGrep <C-R><C-W><CR>
 " - History files will be stored in the specified directory
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
+if has('unix')
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+endif
 
 "###############################################################
 " grammarous
@@ -264,6 +267,9 @@ let g:easy_align_delimiters = {
 "###############################################################
 " vim-terminal-help
 let g:terminal_list = 0
+if has('win32')
+  let g:terminal_shell = 'powershell'
+endif
 
 "###############################################################
 " auto-pairs
@@ -277,7 +283,7 @@ nmap <leader>B :enew<cr>
 "###############################################################
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
+let g:vimspector_base_dir=globpath(fnamemodify($MYVIMRC, ':p:h'), 'vimspector-config')
 
 "###############################################################
 " vimtex
