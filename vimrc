@@ -306,6 +306,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_complete_enabled = 0
 
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_use_temp_files = 1
 
 set spelllang=en_us
 let g:vimtex_grammar_vlty = {}
@@ -314,7 +315,6 @@ let g:vimtex_grammar_vlty.server = 'my'
 let g:vimtex_grammar_vlty.shell_options =
         \   ' --packages "*"'
         \ . ' --equation-punctuation display'
-        \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'
 let g:vimtex_grammar_vlty.show_suggestions = 1
 
 " Close viewers when vimtex buffers are closed
@@ -351,12 +351,13 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-markdownlint',
-      \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-rainbow-fart',
       \ 'coc-rls',
       \ 'coc-snippets',
       \ 'coc-texlab',
       \ 'coc-vimlsp',
+      \ 'coc-word',
       \ 'coc-xml',
       \ 'coc-yaml',
       \ ]
@@ -509,6 +510,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <M-d> <Plug>(coc-cursors-word)
+xmap <silent> <M-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
 nmap <leader>x  <Plug>(coc-cursors-operator)
 

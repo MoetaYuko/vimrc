@@ -26,7 +26,6 @@
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "yapf",
-  "python.jediEnabled": false,
   // rainbow-fart
   "rainbow-fart.locale": ["jp"],
   "rainbow-fart.ffplay": "ffplay",
