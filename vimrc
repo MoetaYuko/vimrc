@@ -291,7 +291,6 @@ if has('clientserver') && empty(v:servername) && exists('*remote_startserver')
   call remote_startserver('VIM')
 endif
 
-let g:tex_flavor = "latex"
 let g:matchup_override_vimtex = 1
 let g:vimtex_compiler_latexmk = {
     \ 'options' : [
@@ -306,7 +305,6 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_complete_enabled = 0
 
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_view_use_temp_files = 1
 
 set spelllang=en_us
 let g:vimtex_grammar_vlty = {}
