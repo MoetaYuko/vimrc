@@ -287,7 +287,7 @@ let g:vimspector_base_dir=globpath(fnamemodify($MYVIMRC, ':p:h'), 'vimspector-co
 
 "###############################################################
 " vimtex
-if has('clientserver') && empty(v:servername) && exists('*remote_startserver')
+if has('clientserver') && empty(v:servername) && exists('*remote_startserver') && (!empty($DISPLAY) || has('win32'))
   call remote_startserver('VIM')
 endif
 
