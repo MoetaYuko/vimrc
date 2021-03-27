@@ -38,6 +38,7 @@ call plug#begin()
  Plug 'bkad/CamelCaseMotion'
  Plug 'bronson/vim-visual-star-search'
  Plug 'easymotion/vim-easymotion'
+ Plug 'farmergreg/vim-lastplace'
  Plug 'qpkorr/vim-bufkill'
 
  " search
