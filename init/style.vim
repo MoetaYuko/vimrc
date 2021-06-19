@@ -7,12 +7,13 @@ if has('termguicolors')
 endif
 set background=dark
 
-let g:gruvbox_italic = 1
-colorscheme gruvbox
+let g:gruvbox_filetype_hi_groups = 1
+let g:gruvbox_plugin_hi_groups = 1
+colorscheme gruvbox8
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox8'
 
 let g:rainbow_active = 1
 

@@ -47,7 +47,7 @@ call plug#begin()
 
  " style
  Plug 'Yggdroot/indentLine'
- Plug 'gruvbox-community/gruvbox'
+ Plug 'lifepillar/vim-gruvbox8'
  Plug 'liuchengxu/vim-which-key'
  Plug 'luochen1990/rainbow'
  Plug 'mhinz/vim-startify'
