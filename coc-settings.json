@@ -7,21 +7,8 @@
   // explorer
   "explorer.icon.enableNerdfont": true,
   "explorer.filename.colored.enable": true,
-  "explorer.file.autoReveal": false,
   // html
   "html.autoClosingTags": true,
-  // latex
-  "latex.build.args": [
-    "-pdf",
-    "-shell-escape",
-    "-interaction=nonstopmode",
-    "-synctex=1"
-  ],
-  "latex.forwardSearch.executable": "okular",
-  "latex.forwardSearch.args": [
-    "--unique",
-    "file:%p#src:%l%f"
-  ],
   // python
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
