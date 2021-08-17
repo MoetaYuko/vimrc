@@ -43,6 +43,7 @@ call plug#begin()
 
  " search
  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
 
  " style

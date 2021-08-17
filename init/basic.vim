@@ -17,3 +17,7 @@ endif
 if filereadable('/usr/share/dict/words')
   set dict+=/usr/share/dict/words
 endif
+
+if has("patch-8.1.0360")
+  set diffopt+=algorithm:patience
+endif
