@@ -123,6 +123,7 @@ let g:camelcasemotion_key = '<leader><leader>'
 "###############################################################
 let g:asyncrun_open = 8
 let g:asynctasks_term_pos = 'bottom'
+noremap <silent><f2> :AsyncTask file-run<cr>
 
 " LeaderF integration
 function! s:lf_task_source(...)
