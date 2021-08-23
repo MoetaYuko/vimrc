@@ -14,6 +14,7 @@
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "yapf",
+  "python.analysis.stubPath": "~/.vim/python-type-stubs",
   // rainbow-fart
   "rainbow-fart.locale": ["jp"],
   "rainbow-fart.ffplay": "ffplay",
