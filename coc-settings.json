@@ -19,7 +19,7 @@
   "rainbow-fart.locale": ["jp"],
   "rainbow-fart.ffplay": "ffplay",
   "rainbow-fart.voice-packages": [
-    "$HOME/kugimiya-voice"
+    "$HOME/.vim/kugimiya-voice"
   ],
   // rust
   "rust-client.disableRustup": true,
