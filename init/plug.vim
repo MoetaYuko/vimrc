@@ -15,6 +15,7 @@ call plug#begin()
  Plug 'jupyter-vim/jupyter-vim'
  Plug 'lervag/vimtex'
  Plug 'lilydjwg/fcitx.vim'
+ Plug 'ojroques/vim-oscyank'
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'skywind3000/asyncrun.vim' | Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
