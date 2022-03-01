@@ -5,7 +5,7 @@
   // explorer
   "explorer.icon.enableNerdfont": true,
   "explorer.filename.colored.enable": true,
-  "explorer.file.cdCommand": "cd",
+  "explorer.file.cdCommand": "tcd",
   // html
   "html.autoClosingTags": true,
   // python
