@@ -21,3 +21,9 @@ endif
 if has("patch-8.1.0360")
   set diffopt+=algorithm:patience
 endif
+
+" exclude quickfix from bnext
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END

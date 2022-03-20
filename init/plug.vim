@@ -1,6 +1,5 @@
 call plug#begin()
  " lsp / dap
- Plug 'antoinemadec/coc-fzf'
  Plug 'jackguo380/vim-lsp-cxx-highlight'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'puremourning/vimspector', {'do': (has('unix') ? 'python3' : 'py -3') . ' install_gadget.py --enable-c --enable-python --enable-rust --basedir ' . globpath(g:vim_home, 'vimspector-config')}
@@ -44,8 +43,6 @@ call plug#begin()
 
  " search
  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
- Plug 'junegunn/fzf.vim'
 
  " style
  Plug 'Yggdroot/indentLine'
@@ -96,11 +93,13 @@ let g:Lf_RgConfig = [
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <leader>rg :<C-U><C-R>=printf("Leaderf! rg -e %s", expand("<cword>"))<CR><CR>
 
-" search visually selected text literally, don't quit LeaderF after accepting an entry
-xnoremap <leader>rg :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s", leaderf#Rg#visual())<CR><CR>
+" search visually selected text literally
+xnoremap <leader>rg :<C-U><C-R>=printf("Leaderf! rg -F -e %s", leaderf#Rg#visual())<CR><CR>
 
 " recall last search. If the result window is closed, reopen it.
-noremap go :<C-U>Leaderf! rg --recall<CR>
+noremap go :<C-U>Leaderf! --recall<CR>
+
+command! -bang -bar -nargs=+ Rg Leaderf<bang> rg <q-args><CR>
 
 "###############################################################
 " vim-which-key
@@ -257,7 +256,6 @@ endfunction
 
 augroup vimtex_event_2
   au!
-  au User VimtexEventInitPost nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
   au User VimtexEventInitPost command! -buffer -nargs=0 VimtexGrammarCheck :Dispatch -compiler=vlty
   au User VimtexEventQuit call CloseViewers()
 augroup END

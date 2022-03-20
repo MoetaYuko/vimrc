@@ -1,5 +1,17 @@
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
+function! ToggleQuickFix()
+    if getqflist({'winid' : 0}).winid
+        cclose
+    else
+        copen
+    endif
+endfunction
+
+command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
+
+nnoremap yoq :ToggleQuickFix<CR>
+
 "###############################################################
 " sideways.vim
 "###############################################################
