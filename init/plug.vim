@@ -21,6 +21,7 @@ call plug#begin()
  Plug 'skywind3000/vim-terminal-help'
  Plug 'svermeulen/vim-cutlass'
  Plug 'tmux-plugins/vim-tmux-focus-events'
+ Plug 'tommcdo/vim-exchange'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
  Plug 'tpope/vim-dispatch'
@@ -57,6 +58,7 @@ call plug#begin()
 
  " syntax
  Plug 'cespare/vim-toml'
+ Plug 'fladson/vim-kitty'
  Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
  Plug 'lzap/vim-selinux'
  Plug 'pboettch/vim-cmake-syntax'
@@ -235,6 +237,12 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_complete_enabled = 0
 
 let g:vimtex_view_method = 'zathura'
+
+let g:vimtex_quickfix_ignore_filters = [
+    \ 'Underfull',
+    \ 'Overfull',
+    \ 'math shift',
+    \ ]
 
 set spelllang=en_us
 let g:vimtex_grammar_vlty = {}

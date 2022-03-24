@@ -17,5 +17,6 @@ let g:airline_theme='gruvbox8'
 
 let g:rainbow_active = 1
 
+let g:indentLine_setColors = 0
 let g:indentLine_concealcursor = ''
 let g:indentLine_fileTypeExclude = ['coc-explorer', 'leaderf']
