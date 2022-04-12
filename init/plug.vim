@@ -1,6 +1,5 @@
 call plug#begin()
  " lsp / dap
- Plug 'jackguo380/vim-lsp-cxx-highlight'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'puremourning/vimspector', {'do': (has('unix') ? 'python3' : 'py -3') . ' install_gadget.py --enable-c --enable-python --enable-rust --basedir ' . globpath(g:vim_home, 'vimspector-config')}
 
@@ -28,6 +27,7 @@ call plug#begin()
  Plug 'tpope/vim-eunuch'
  Plug 'tpope/vim-fugitive'
  Plug 'tpope/vim-repeat'
+ Plug 'tpope/vim-rhubarb'
  Plug 'tpope/vim-sensible'
  Plug 'tpope/vim-unimpaired'
  Plug 'vimwiki/vimwiki'
@@ -125,6 +125,7 @@ let g:camelcasemotion_key = '<leader><leader>'
 "###############################################################
 let g:asyncrun_open = 8
 let g:asynctasks_term_pos = 'bottom'
+noremap <silent><leader>mm :AsyncTaskLast<cr>
 noremap <silent><f2> :AsyncTask file-run<cr>
 
 " LeaderF integration

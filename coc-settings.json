@@ -1,7 +1,7 @@
 {
+  "semanticTokens.filetypes": ["*"],
   // clangd
   "clangd.arguments": ["--query-driver=**/*"],
-  "clangd.semanticHighlighting": true,
   // explorer
   "explorer.icon.enableNerdfont": true,
   "explorer.filename.colored.enable": true,
