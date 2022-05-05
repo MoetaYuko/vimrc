@@ -5,6 +5,7 @@ call plug#begin()
 
  " misc
  Plug 'airblade/vim-gitgutter'
+ Plug 'anufrievroman/vim-angry-reviewer'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
  Plug 'ianding1/leetcode.vim'
