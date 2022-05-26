@@ -7,7 +7,7 @@ call plug#begin()
  Plug 'airblade/vim-gitgutter'
  Plug 'anufrievroman/vim-angry-reviewer'
  Plug 'honza/vim-snippets'
- Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
  Plug 'ianding1/leetcode.vim'
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
