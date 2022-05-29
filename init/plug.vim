@@ -1,26 +1,26 @@
 call plug#begin()
- " lsp / dap
+" lsp / dap {{{
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'puremourning/vimspector', {'do': (has('unix') ? 'python3' : 'py -3') . ' install_gadget.py --enable-c --enable-python --enable-rust --basedir ' . globpath(g:vim_home, 'vimspector-config')}
+" }}}
 
- " misc
+" misc {{{
  Plug 'airblade/vim-gitgutter'
  Plug 'anufrievroman/vim-angry-reviewer'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
  Plug 'ianding1/leetcode.vim'
+ Plug 'jszakmeister/vim-togglecursor'
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
- Plug 'jupyter-vim/jupyter-vim'
  Plug 'lervag/vimtex'
- Plug 'lilydjwg/fcitx.vim'
+ Plug 'lilydjwg/fcitx.vim', { 'on': [] }
  Plug 'machakann/vim-sandwich'
  Plug 'ojroques/vim-oscyank'
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'skywind3000/asyncrun.vim' | Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
  Plug 'svermeulen/vim-cutlass'
- Plug 'tmux-plugins/vim-tmux-focus-events'
  Plug 'tommcdo/vim-exchange'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
@@ -33,53 +33,55 @@ call plug#begin()
  Plug 'tpope/vim-unimpaired'
  Plug 'vimwiki/vimwiki'
  Plug 'will133/vim-dirdiff'
- Plug 'wincent/terminus'
+" " }}}
 
- " navigation
+" navigation {{{
  Plug 'andymass/vim-matchup'
  Plug 'bkad/CamelCaseMotion'
  Plug 'bronson/vim-visual-star-search'
  Plug 'easymotion/vim-easymotion'
  Plug 'farmergreg/vim-lastplace'
  Plug 'qpkorr/vim-bufkill'
+" }}}
 
- " search
+" search {{{
  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" }}}
 
- " style
+" style {{{
  Plug 'Yggdroot/indentLine'
+ Plug 'itchyny/lightline.vim'
  Plug 'lifepillar/vim-gruvbox8'
  Plug 'liuchengxu/vim-which-key'
  Plug 'luochen1990/rainbow'
+ Plug 'mengelbrecht/lightline-bufferline'
  Plug 'mhinz/vim-startify'
  Plug 'ntpeters/vim-better-whitespace'
  Plug 'ryanoasis/vim-devicons'
  Plug 'tpope/vim-sleuth'
- Plug 'vim-airline/vim-airline'
+" }}}
 
- " syntax
+" syntax {{{
  Plug 'cespare/vim-toml'
  Plug 'fladson/vim-kitty'
- Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
  Plug 'lzap/vim-selinux'
  Plug 'pboettch/vim-cmake-syntax'
  Plug 'rubberduck203/aosp-vim'
- Plug 'vim-python/python-syntax'
+ Plug 'vim-python/python-syntax', { 'for': 'python' }
+" }}}
 
- " textobj
+" textobj {{{
  Plug 'AndrewRadev/sideways.vim'
  Plug 'michaeljsmith/vim-indent-object'
  Plug 'wellle/targets.vim'
+" }}}
 call plug#end()
 
-"###############################################################
-" python-syntax
-"###############################################################
+" python-syntax {{{
 let g:python_highlight_all = 1
+" }}}
 
-"###############################################################
-" LeaderF
-"###############################################################
+" LeaderF {{{
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 
@@ -103,27 +105,23 @@ xnoremap <leader>rg :<C-U><C-R>=printf("Leaderf! rg -F -e %s", leaderf#Rg#visual
 noremap go :<C-U>Leaderf! --recall<CR>
 
 command! -bang -bar -nargs=+ Rg Leaderf<bang> rg <q-args><CR>
+" }}}
 
-"###############################################################
-" vim-which-key
-"###############################################################
+" vim-which-key {{{
 nnoremap <silent> <leader>      :<c-u>WhichKey '<leader>'<CR>
 nnoremap <silent> <space>      :<c-u>WhichKey '<space>'<CR>
+" }}}
 
-"###############################################################
-" vim-markdown
-"###############################################################
+" vim-markdown {{{
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+" }}}
 
-"###############################################################
-" CamelCaseMotion
-"###############################################################
+" CamelCaseMotion {{{
 let g:camelcasemotion_key = '<leader><leader>'
+" }}}
 
-"###############################################################
-" asynctasks.vim
-"###############################################################
+" asynctasks.vim {{{
 let g:asyncrun_open = 8
 let g:asynctasks_term_pos = 'bottom'
 noremap <silent><leader>mm :AsyncTaskLast<cr>
@@ -180,47 +178,47 @@ let g:Lf_Extensions.task = {
 		\ }
 
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
+" }}}
 
-"###############################################################
-" leetcode
-"###############################################################
+" fcitx.vim {{{
+augroup load_fcitx
+  autocmd!
+  autocmd InsertEnter * call plug#load('fcitx.vim') | autocmd! load_fcitx
+augroup END
+" }}}
+
+" leetcode {{{
 let g:leetcode_solution_filetype='rust'
 let g:leetcode_browser='chrome'
+" }}}
 
-"###############################################################
-" vim-easy-align
-"###############################################################
+" vim-easy-align {{{
 let g:easy_align_delimiters = {
 \  '%': { 'pattern': '%\+', 'delimiter_align': 'l', 'ignore_groups': ['!Comment']  },
 \ }
+" }}}
 
-"###############################################################
-" vim-terminal-help
-"###############################################################
+" vim-terminal-help {{{
 let g:terminal_list = 0
 if has('win32')
   let g:terminal_shell = 'powershell'
 endif
+" }}}
 
-"###############################################################
-" auto-pairs
-"###############################################################
+" auto-pairs {{{
 let g:AutoPairsMapCR = 0
+" }}}
 
-"###############################################################
-" vim-gitgutter
-"###############################################################
+" vim-gitgutter {{{
 let g:gitgutter_max_signs = 10000
+" }}}
 
-"###############################################################
-" vimspector
-"###############################################################
+" vimspector {{{
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=globpath(g:vim_home, 'vimspector-config')
+" }}}
 
-"###############################################################
-" vimtex
-"###############################################################
+" vimtex {{{
 if has('clientserver') && empty(v:servername) && exists('*remote_startserver') && (!empty($DISPLAY) || has('win32'))
   call remote_startserver('VIM')
 endif
@@ -269,11 +267,13 @@ augroup vimtex_event_2
   au User VimtexEventInitPost command! -buffer -nargs=0 VimtexGrammarCheck :Dispatch -compiler=vlty
   au User VimtexEventQuit call CloseViewers()
 augroup END
+" }}}
 
-"###############################################################
-" vimwiki
-"###############################################################
+" vimwiki {{{
 let g:vimwiki_list = [{'path': '~/OneDrive/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+" }}}
 
 LoadScript init/coc-nvim.vim
+
+" vim:fdm=marker
