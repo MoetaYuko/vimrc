@@ -14,7 +14,7 @@ call plug#begin()
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
  Plug 'lervag/vimtex'
- Plug 'lilydjwg/fcitx.vim', { 'on': [] }
+ Plug 'lilydjwg/fcitx.vim'
  Plug 'machakann/vim-sandwich'
  Plug 'ojroques/vim-oscyank'
  Plug 'roxma/vim-tmux-clipboard'
@@ -181,10 +181,7 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf --nowrap task %s", "")<CR><CR>
 " }}}
 
 " fcitx.vim {{{
-augroup load_fcitx
-  autocmd!
-  autocmd InsertEnter * call plug#load('fcitx.vim') | autocmd! load_fcitx
-augroup END
+let g:fcitx5_remote = 'fcitx5-remote'
 " }}}
 
 " leetcode {{{
