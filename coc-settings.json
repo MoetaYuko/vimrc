@@ -1,4 +1,5 @@
 {
+  "snippets.autoTrigger": false,
   "semanticTokens.filetypes": ["*"],
   // clangd
   "clangd.arguments": ["--query-driver=**/*"],

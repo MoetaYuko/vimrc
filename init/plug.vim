@@ -104,7 +104,7 @@ xnoremap <leader>rg :<C-U><C-R>=printf("Leaderf! rg -F -e %s", leaderf#Rg#visual
 " recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! --recall<CR>
 
-command! -bang -bar -nargs=+ Rg Leaderf<bang> rg <q-args><CR>
+command! -bang -bar -nargs=? Rg Leaderf<bang> rg <q-args><CR>
 " }}}
 
 " vim-which-key {{{
