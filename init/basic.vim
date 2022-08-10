@@ -1,3 +1,4 @@
+set hidden
 set number
 set cursorline
 set ignorecase smartcase
