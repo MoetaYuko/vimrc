@@ -19,6 +19,7 @@ let g:coc_global_extensions = [
       \ 'coc-word',
       \ 'coc-xml',
       \ 'coc-yaml',
+      \ 'coc-yank',
       \ ]
 
 " Some servers have issues with backup files, see #649.
@@ -168,6 +169,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <silent><nowait> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " Multiple cursors support
 nmap <silent> <C-c> <Plug>(coc-cursors-position)

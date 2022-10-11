@@ -1,5 +1,4 @@
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
+" quickfix {{{
 function! ToggleQuickFix()
     if getqflist({'winid' : 0}).winid
         cclose
@@ -11,35 +10,26 @@ endfunction
 command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
 
 nnoremap yoq :ToggleQuickFix<CR>
+" }}}
 
-"###############################################################
-" sideways.vim
-"###############################################################
+" sideways.vim {{{
 nnoremap [, :SidewaysJumpLeft<cr>
 nnoremap ], :SidewaysJumpRight<cr>
 nnoremap <, :SidewaysLeft<cr>
 nnoremap >, :SidewaysRight<cr>
+" }}}
 
-"###############################################################
-" vim-cutlass
-"###############################################################
-nnoremap x d
-xnoremap x d
-
-nnoremap xx dd
-nnoremap X D
-
-"###############################################################
-" vim-easy-align
-"###############################################################
+" vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" }}}
 
-"###############################################################
-" vim-sandwich
-"###############################################################
+" vim-sandwich {{{
 nmap s <Nop>
 xmap s <Nop>
+" }}}
+
+" vim:fdm=marker

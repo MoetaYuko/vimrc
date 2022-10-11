@@ -7,6 +7,7 @@ call plug#begin()
 " misc {{{
  Plug 'airblade/vim-gitgutter'
  Plug 'anufrievroman/vim-angry-reviewer'
+ Plug 'christoomey/vim-system-copy'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
  Plug 'ianding1/leetcode.vim'
@@ -20,7 +21,6 @@ call plug#begin()
  Plug 'roxma/vim-tmux-clipboard'
  Plug 'skywind3000/asyncrun.vim' | Plug 'skywind3000/asynctasks.vim'
  Plug 'skywind3000/vim-terminal-help'
- Plug 'svermeulen/vim-cutlass'
  Plug 'tommcdo/vim-exchange'
  Plug 'tpope/vim-abolish'
  Plug 'tpope/vim-commentary'
@@ -33,7 +33,7 @@ call plug#begin()
  Plug 'tpope/vim-unimpaired'
  Plug 'vimwiki/vimwiki'
  Plug 'will133/vim-dirdiff'
-" " }}}
+" }}}
 
 " navigation {{{
  Plug 'andymass/vim-matchup'
