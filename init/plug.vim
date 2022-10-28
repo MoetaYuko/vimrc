@@ -272,6 +272,10 @@ let g:vimwiki_list = [{'path': '~/OneDrive/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 
+" vim-startify {{{
+let g:startify_change_to_dir = 0
+" }}}
+
 LoadScript init/coc-nvim.vim
 
 " vim:fdm=marker

@@ -1,6 +1,6 @@
 {
   "snippets.autoTrigger": false,
-  "semanticTokens.filetypes": ["*"],
+  "semanticTokens.enable": true,
   // clangd
   "clangd.arguments": ["--query-driver=**/*"],
   // explorer
