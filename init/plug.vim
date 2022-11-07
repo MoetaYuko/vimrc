@@ -10,7 +10,6 @@ call plug#begin()
  Plug 'christoomey/vim-system-copy'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
- Plug 'ianding1/leetcode.vim'
  Plug 'jszakmeister/vim-togglecursor'
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
