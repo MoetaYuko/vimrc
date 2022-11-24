@@ -1,6 +1,7 @@
 {
   "snippets.autoTrigger": false,
   "semanticTokens.enable": true,
+  "colors.enable": true,
   // clangd
   "clangd.arguments": ["--query-driver=**/*"],
   // explorer
