@@ -269,6 +269,7 @@ augroup END
 " vimwiki {{{
 let g:vimwiki_list = [{'path': '~/OneDrive/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_table_mappings = 0
 " }}}
 
 " vim-startify {{{
