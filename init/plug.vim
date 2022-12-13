@@ -45,6 +45,7 @@ call plug#begin()
 
 " search {{{
  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+ Plug 'romainl/vim-cool'
 " }}}
 
 " style {{{
