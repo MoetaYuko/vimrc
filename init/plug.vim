@@ -1,7 +1,7 @@
 call plug#begin()
 " lsp / dap {{{
  Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
- Plug 'puremourning/vimspector', {'do': (has('unix') ? 'python3' : 'py -3') . ' install_gadget.py --enable-c --enable-python --enable-rust --basedir ' . globpath(g:vim_home, 'vimspector-config')}
+ Plug 'puremourning/vimspector', {'do': ':VimspectorInstall --enable-c --enable-python --enable-rust'}
 " }}}
 
 " misc {{{
@@ -212,7 +212,7 @@ let g:gitgutter_sign_priority = 9
 " }}}
 
 " vimspector {{{
-let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 let g:vimspector_base_dir=globpath(g:vim_home, 'vimspector-config')
 " }}}
 

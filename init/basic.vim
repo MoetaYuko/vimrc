@@ -3,6 +3,7 @@ set number
 set cursorline
 set ignorecase smartcase
 set hlsearch
+set modeline
 
 if has('multi_byte')
   " 内部工作编码

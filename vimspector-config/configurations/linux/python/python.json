@@ -5,11 +5,11 @@
       "configuration": {
         "name": "Current file: Launch",
         "type": "python",
+        "python": "python3",
         "request": "launch",
-        "cwd": "${workspaceRoot}",
-        "console": "externalTerminal",
-        "debugOptions": [],
-        "program": "${file}"
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "justMyCode": true
       }
     }
   }
