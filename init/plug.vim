@@ -202,10 +202,6 @@ if has('win32')
 endif
 " }}}
 
-" auto-pairs {{{
-let g:AutoPairsMapCR = 0
-" }}}
-
 " vim-gitgutter {{{
 let g:gitgutter_max_signs = 10000
 let g:gitgutter_sign_priority = 9
