@@ -35,7 +35,7 @@ call plug#begin()
 " }}}
 
 " navigation {{{
- Plug 'andymass/vim-matchup'
+ " Plug 'andymass/vim-matchup'
  Plug 'bkad/CamelCaseMotion'
  Plug 'bronson/vim-visual-star-search'
  Plug 'easymotion/vim-easymotion'
