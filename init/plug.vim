@@ -1,6 +1,6 @@
 call plug#begin()
 " lsp / dap {{{
- Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'puremourning/vimspector', {'do': ':VimspectorInstall --enable-c --enable-python --enable-rust'}
 " }}}
 
@@ -10,7 +10,6 @@ call plug#begin()
  Plug 'christoomey/vim-system-copy'
  Plug 'honza/vim-snippets'
  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
- Plug 'jszakmeister/vim-togglecursor'
  Plug 'junegunn/gv.vim'
  Plug 'junegunn/vim-easy-align'
  Plug 'lervag/vimtex'
@@ -63,6 +62,7 @@ call plug#begin()
 
 " syntax {{{
  Plug 'cespare/vim-toml'
+ Plug 'elkowar/yuck.vim'
  Plug 'fladson/vim-kitty'
  Plug 'lzap/vim-selinux'
  Plug 'pboettch/vim-cmake-syntax'
