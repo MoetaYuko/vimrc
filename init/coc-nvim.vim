@@ -12,7 +12,7 @@ let g:coc_global_extensions = [
       \ 'coc-pairs',
       \ 'coc-pyright',
       \ 'coc-rainbow-fart',
-      \ 'coc-rls',
+      \ 'coc-rust-analyzer',
       \ 'coc-snippets',
       \ 'coc-texlab',
       \ 'coc-vimlsp',
